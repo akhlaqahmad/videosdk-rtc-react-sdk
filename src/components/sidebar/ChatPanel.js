@@ -1,4 +1,4 @@
-import { PaperAirplaneIcon } from "@heroicons/react/solid";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { useMeeting, usePubSub } from "@videosdk.live/react-sdk";
 import React, { useEffect, useRef, useState } from "react";
 import { formatAMPM, json_verify, nameTructed } from "../../utils/helper";
@@ -18,18 +18,18 @@ const ChatMessage = ({ senderId, senderName, text, timestamp }) => {
       <div
         className={`flex ${
           localSender ? "items-end" : "items-start"
-        } flex-col py-1 px-2 rounded-md bg-gray-700`}
+        } flex-col py-1 px-2 rounded-md bg-surface`}
       >
-        <p style={{ color: "#ffffff80" }}>
+        <p className="text-textmuted">
           {localSender ? "You" : nameTructed(senderName, 15)}
         </p>
         <div>
-          <p className="inline-block whitespace-pre-wrap break-words text-right text-white">
+          <p className="inline-block whitespace-pre-wrap break-words text-right text-text">
             {text}
           </p>
         </div>
         <div className="mt-1">
-          <p className="text-xs italic" style={{ color: "#ffffff80" }}>
+          <p className="text-xs italic text-textmuted">
             {formatAMPM(new Date(timestamp))}
           </p>
         </div>
@@ -65,16 +65,12 @@ const ChatInput = ({ inputHeight }) => {
               }
             }}
           >
-            <PaperAirplaneIcon
-              className={`w-6 h-6 ${
-                message.length < 2 ? "text-gray-500 " : "text-white"
-              }`}
-            />
+            <PaperAirplaneIcon className={`w-6 h-6 ${message.length < 2 ? "text-textmuted" : "text-text"}`} />
           </button>
         </span>
         <input
           type="text"
-          className="py-4 text-base text-white border-gray-400 border bg-gray-750 rounded pr-10 pl-2 focus:outline-none w-full"
+          className="py-4 text-base text-text border-neutral-200 border bg-surface rounded pr-10 pl-2 focus:outline-none w-full"
           placeholder="Write your message"
           autocomplete="off"
           ref={input}

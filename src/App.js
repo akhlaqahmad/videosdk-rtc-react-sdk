@@ -5,6 +5,9 @@ import { MeetingAppProvider } from "./MeetingAppContextDef";
 import { MeetingContainer } from "./meeting/MeetingContainer";
 import { LeaveScreen } from "./components/screens/LeaveScreen";
 import { JoiningScreen } from "./components/screens/JoiningScreen"
+import ThemeToggle from "./components/ThemeToggle";
+import { initTheme, subscribeSystemPreference, subscribeThemeStorage } from "./lib/theme";
+import logo from "./pictures/logo.png";
 
 function App() {
   const [token, setToken] = useState("");
@@ -22,6 +25,17 @@ function App() {
   ).matches;
 
   useEffect(() => {
+    // Initialize theme and subscribe to system changes (if no stored pref)
+    initTheme();
+    const unsubscribeSys = subscribeSystemPreference();
+    const unsubscribeStorage = subscribeThemeStorage();
+    return () => {
+      unsubscribeSys && unsubscribeSys();
+      unsubscribeStorage && unsubscribeStorage();
+    };
+  }, []);
+
+  useEffect(() => {
     if (isMobile) {
       window.onbeforeunload = () => {
         return "Are you sure you want to exit?";
@@ -32,6 +46,10 @@ function App() {
   return (
     <>
       <MeetingAppProvider>
+        <div className="fixed top-3 right-3 z-50 flex items-center gap-2">
+          <img src={logo} alt="brand" className="h-20 w-auto opacity-80 hidden md:block" />
+          <ThemeToggle />
+        </div>
         {isMeetingStarted ? (
 
           <MeetingProvider

@@ -1,6 +1,7 @@
 import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import logo from "../pictures/logo.png";
 
 export function MeetingDetailsScreen({
   onClickJoin,
@@ -19,9 +20,12 @@ export function MeetingDetailsScreen({
     <div
       className={`flex flex-1 flex-col justify-center w-full md:p-[6px] sm:p-1 p-1.5`}
     >
+      <div className="flex items-center justify-center mb-4">
+        <img src={logo} alt="brand" className="h-25 w-auto opacity-80" />
+      </div>
       {iscreateMeetingClicked ? (
-        <div className="border border-solid border-gray-400 rounded-xl px-4 py-3  flex items-center justify-center">
-          <p className="text-white text-base">
+        <div className="border border-solid border-neutral-200 rounded-xl px-4 py-3 bg-surface flex items-center justify-center">
+          <p className="text-text text-base">
             {`Meeting code : ${meetingId}`}
           </p>
           <button
@@ -37,7 +41,7 @@ export function MeetingDetailsScreen({
             {isCopied ? (
               <CheckIcon className="h-5 w-5 text-green-400" />
             ) : (
-              <ClipboardIcon className="h-5 w-5 text-white" />
+              <ClipboardIcon className="h-5 w-5 text-text" />
             )}
           </button>
         </div>
@@ -49,7 +53,7 @@ export function MeetingDetailsScreen({
               setMeetingId(e.target.value);
             }}
             placeholder={"Enter meeting Id"}
-            className="px-4 py-3 bg-gray-650 rounded-xl text-white w-full text-center"
+            className="px-4 py-3 bg-surface rounded-xl text-text w-full text-center border border-neutral-200"
           />
           {meetingIdError && (
             <p className="text-xs text-red-600">{`Please enter valid meetingId`}</p>
@@ -63,7 +67,7 @@ export function MeetingDetailsScreen({
             value={participantName}
             onChange={(e) => setParticipantName(e.target.value)}
             placeholder="Enter your name"
-            className="px-4 py-3 mt-5 bg-gray-650 rounded-xl text-white w-full text-center"
+            className="px-4 py-3 mt-5 bg-surface rounded-xl text-text w-full text-center border border-neutral-200"
           />
 
           {/* <p className="text-xs text-white mt-1 text-center">
@@ -71,8 +75,7 @@ export function MeetingDetailsScreen({
           </p> */}
           <button
             disabled={participantName.length < 3}
-            className={`w-full ${participantName.length < 3 ? "bg-gray-650" : "bg-purple-350"
-              }  text-white px-2 py-3 rounded-xl mt-5`}
+            className={`w-full ${participantName.length < 3 ? "bg-neutral-200 text-text" : "bg-purple-350 text-white"} px-2 py-3 rounded-xl mt-5`}
             onClick={(e) => {
               if (iscreateMeetingClicked) {
                 onClickStartMeeting();
@@ -119,7 +122,7 @@ export function MeetingDetailsScreen({
               Create a meeting
             </button>
             <button
-              className="w-full bg-gray-650 text-white px-2 py-3 rounded-xl mt-5"
+              className="w-full bg-surface text-text px-2 py-3 rounded-xl mt-5 border border-neutral-200"
               onClick={(e) => {
                 setIsJoinMeetingClicked(true);
               }}

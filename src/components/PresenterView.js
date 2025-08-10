@@ -60,7 +60,7 @@ export function PresenterView({ height }) {
 
   return (
     <div
-      className={` bg-gray-750 rounded m-2 relative overflow-hidden w-full h-[${
+      className={` bg-surface2 rounded m-2 relative overflow-hidden w-full h-[${
         height - "xl:p-6 lg:p-[52px] md:p-[26px] p-1"
       }] `}
     >
@@ -90,7 +90,7 @@ export function PresenterView({ height }) {
           }}
         />
         <div
-          className="bottom-2 left-2 bg-gray-750 p-2 absolute rounded-md flex items-center justify-center"
+          className="bottom-2 left-2 bg-surface p-2 absolute rounded-md flex items-center justify-center"
           style={{
             transition: "all 200ms",
             transitionTimingFunction: "linear",
@@ -112,7 +112,7 @@ export function PresenterView({ height }) {
         </div>
         {isLocal ? (
           <>
-            <div className="p-10 rounded-2xl flex flex-col items-center justify-center absolute top-1/2 left-1/2 bg-gray-750 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="p-10 rounded-2xl flex flex-col items-center justify-center absolute top-1/2 left-1/2 bg-surface transform -translate-x-1/2 -translate-y-1/2 border border-neutral-200">
               <ScreenShareIcon
                 style={{ height: 48, width: 48, color: "white" }}
               />

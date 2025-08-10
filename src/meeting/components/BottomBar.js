@@ -215,7 +215,7 @@ const MicBTN = () => {
         onClick={() => {
           mMeeting.toggleMic();
         }}
-        bgColor={localMicOn ? "bg-gray-750" : "bg-white"}
+        bgColor={localMicOn ? "bg-surface2" : "bg-surface"}
         borderColor={localMicOn && "#ffffff33"}
         isFocused={localMicOn}
         focusIconColor={localMicOn && "white"}
@@ -260,25 +260,25 @@ const MicBTN = () => {
                     >
                       <Popover.Panel className="absolute left-1/2 bottom-full z-10 mt-3 w-72 -translate-x-1/2 transform px-4 sm:px-0 pb-4">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                          <div className={" bg-gray-750 py-1"}>
+                          <div className={" bg-surface2 py-1"}>
                             <div>
                               <div className="flex items-center p-3 pb-0">
-                                <p className="ml-3 text-sm text-gray-900">
+                                <p className="ml-3 text-sm text-text">
                                   {"MICROPHONE"}
                                 </p>
                               </div>
                               <div className="flex flex-col">
                                 {mics.map(({ deviceId, label }, index) => (
                                   <div
-                                    className={`px-3 py-1 my-1 pl-6 text-white text-left ${
+                                    className={`px-3 py-1 my-1 pl-6 text-text text-left ${
                                       deviceId === selectedMic.id &&
-                                      "bg-gray-150"
+                                      "bg-neutral-200"
                                     }`}
                                   >
                                     <button
-                                      className={`flex flex-1 w-full text-left ${
+                                       className={`flex flex-1 w-full text-left ${
                                         deviceId === selectedMic.id &&
-                                        "bg-gray-150"
+                                         "bg-neutral-200"
                                       }`}
                                       key={`mics_${deviceId}`}
                                       onClick={() => {
@@ -293,25 +293,25 @@ const MicBTN = () => {
                                 ))}
                               </div>
                             </div>
-                            <hr className="border border-gray-50 mt-2 mb-1" />
+                            <hr className="border border-neutral-200 mt-2 mb-1" />
                             <div>
                               <div className="flex p-3 pb-0">
-                                <p className="ml-3 text-sm text-gray-900  text-center">
+                                <p className="ml-3 text-sm text-text  text-center">
                                   {"SPEAKER"}
                                 </p>
                               </div>
                               <div className="flex flex-col ">
                                 {speakers.map(({ deviceId, label }, index) => (
                                   <div
-                                    className={`px-3 py-1 my-1 pl-6 text-white ${
+                                    className={`px-3 py-1 my-1 pl-6 text-text ${
                                       deviceId === selectedSpeaker.id &&
-                                      "bg-gray-150"
+                                      "bg-neutral-200"
                                     }`}
                                   >
                                     <button
-                                      className={`flex flex-1 w-full text-left ${
+                                       className={`flex flex-1 w-full text-left ${
                                         deviceId === selectedSpeaker.id &&
-                                        "bg-gray-150"
+                                         "bg-neutral-200"
                                       }`}
                                       key={`speakers_${deviceId}`}
                                       onClick={() => {
@@ -339,8 +339,8 @@ const MicBTN = () => {
                 } overflow-hidden flex flex-col items-center justify-center pb-4`}
                 ref={tooltipRef}
               >
-                <div className={"rounded-md p-1.5 bg-black "}>
-                  <p className="text-base text-white ">{"Change microphone"}</p>
+                <div className={"rounded-md p-1.5 bg-surface "}>
+                  <p className="text-base text-text ">{"Change microphone"}</p>
                 </div>
               </div>
             </>
@@ -395,7 +395,7 @@ const WebCamBTN = () => {
           }
           mMeeting.toggleWebcam(track);
         }}
-        bgColor={localWebcamOn ? "bg-gray-750" : "bg-white"}
+        bgColor={localWebcamOn ? "bg-surface2" : "bg-surface"}
         borderColor={localWebcamOn && "#ffffff33"}
         isFocused={localWebcamOn}
         focusIconColor={localWebcamOn && "white"}
@@ -440,25 +440,25 @@ const WebCamBTN = () => {
                     >
                       <Popover.Panel className="absolute left-1/2 bottom-full z-10 mt-3 w-72 -translate-x-1/2 transform px-4 sm:px-0 pb-4">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                          <div className={" bg-gray-750 py-1"}>
+                          <div className={" bg-surface2 py-1"}>
                             <div>
                               <div className="flex items-center p-3 pb-0">
-                                <p className="ml-3 text-sm text-gray-900">
+                                <p className="ml-3 text-sm text-text">
                                   {"WEBCAM"}
                                 </p>
                               </div>
                               <div className="flex flex-col">
                                 {webcams.map(({ deviceId, label }, index) => (
                                   <div
-                                    className={`px-3 py-1 my-1 pl-6 text-white ${
+                                    className={`px-3 py-1 my-1 pl-6 text-text ${
                                       deviceId === selectedWebcam.id &&
-                                      "bg-gray-150"
+                                      "bg-neutral-200"
                                     }`}
                                   >
                                     <button
-                                      className={`flex flex-1 w-full text-left ${
+                                       className={`flex flex-1 w-full text-left ${
                                         deviceId === selectedWebcam.id &&
-                                        "bg-gray-150"
+                                         "bg-neutral-200"
                                       }`}
                                       key={`output_webcams_${deviceId}`}
                                       onClick={() => {
@@ -487,8 +487,8 @@ const WebCamBTN = () => {
                 } overflow-hidden flex flex-col items-center justify-center pb-4`}
                 ref={tooltipRef}
               >
-                <div className={"rounded-md p-1.5 bg-black "}>
-                  <p className="text-base text-white ">{"Change webcam"}</p>
+                <div className={"rounded-md p-1.5 bg-surface "}>
+                  <p className="text-base text-text ">{"Change webcam"}</p>
                 </div>
               </div>
             </>
@@ -718,8 +718,8 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
     const [isCopied, setIsCopied] = useState(false);
     return (
       <div className="flex items-center justify-center lg:ml-0 ml-4 mt-4 xl:mt-0">
-        <div className="flex border-2 border-gray-850 p-2 rounded-md items-center justify-center">
-          <h1 className="text-white text-base ">{meetingId}</h1>
+        <div className="flex border-2 border-neutral-200 bg-surface p-2 rounded-md items-center justify-center">
+          <h1 className="text-text text-base ">{meetingId}</h1>
           <button
             className="ml-2"
             onClick={() => {
@@ -733,7 +733,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
             {isCopied ? (
               <CheckIcon className="h-5 w-5 text-green-400" />
             ) : (
-              <ClipboardIcon className="h-5 w-5 text-white" />
+              <ClipboardIcon className="h-5 w-5 text-text" />
             )}
           </button>
         </div>
@@ -805,7 +805,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-text bg-opacity-25" />
           </Transition.Child>
 
           <Transition.Child
@@ -819,8 +819,8 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
           >
             <div className="fixed inset-0 overflow-y-hidden">
               <div className="flex h-full items-end justify-end text-center">
-                <Dialog.Panel className="w-screen transform overflow-hidden bg-gray-800 shadow-xl transition-all">
-                  <div className="grid container bg-gray-800 py-6">
+                <Dialog.Panel className="w-screen transform overflow-hidden bg-bg shadow-xl transition-all">
+                  <div className="grid container bg-bg py-6">
                     <div className="grid grid-cols-12 gap-2">
                       {otherFeatures.map(({ icon }) => {
                         return (
@@ -868,6 +868,9 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
     </div>
   ) : (
     <div className="md:flex lg:px-2 xl:px-6 pb-2 px-2 hidden">
+      <div className="flex items-center justify-center mr-2">
+        <img src={"/logo.png"} alt="brand" className="h-6 w-auto opacity-80" />
+      </div>
       <MeetingIdCopyBTN />
 
       <div className="flex flex-1 items-center justify-center" ref={tollTipEl}>

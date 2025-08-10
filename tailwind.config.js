@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class",
   mode: "jit",
   theme: {
     colors: {
@@ -40,6 +40,21 @@ module.exports = {
       },
 
       colors: {
+        // Semantic theme tokens mapped to CSS variables
+        bg: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        surface2: "rgb(var(--surface-2) / <alpha-value>)",
+        primary: {
+          100: "rgb(var(--primary-100) / <alpha-value>)",
+          200: "rgb(var(--primary-200) / <alpha-value>)",
+        },
+        neutral: {
+          100: "rgb(var(--neutral-100) / <alpha-value>)",
+          200: "rgb(var(--neutral-200) / <alpha-value>)",
+        },
+        text: "rgb(var(--text) / <alpha-value>)",
+        "text-inverse": "rgb(var(--text-inverse) / <alpha-value>)",
+        textmuted: "rgb(var(--text-muted) / <alpha-value>)",
         gray: {
           50: "#555555",
           100: "#FFFFFF",

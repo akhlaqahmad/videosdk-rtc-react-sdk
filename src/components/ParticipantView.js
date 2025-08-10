@@ -235,7 +235,7 @@ export const CornerDisplayName = ({
         ) : micOn && isActiveSpeaker ? (
           <SpeakerIcon />
         ) : null}
-        <p className="text-sm text-white ml-0.5">
+        <p className="text-sm text-text ml-0.5">
           {isPresenting
             ? isLocal
               ? `You are presenting`
@@ -316,7 +316,7 @@ export const CornerDisplayName = ({
                         >
                           <div
                             ref={setStatsBoxHeightRef}
-                            className="bg-gray-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 "
+                            className="bg-surface rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 "
                           >
                             <div
                               className={`p-[9px] flex items-center justify-between rounded-t-lg`}
@@ -329,7 +329,7 @@ export const CornerDisplayName = ({
                                     : "#FF5D5D",
                               }}
                             >
-                              <p className="text-sm text-white font-semibold">{`Quality Score : ${
+                               <p className="text-sm text-text font-semibold">{`Quality Score : ${
                                 score > 7
                                   ? "Good"
                                   : score > 4
@@ -338,14 +338,14 @@ export const CornerDisplayName = ({
                               }`}</p>
 
                               <button
-                                className="cursor-pointer text-white hover:bg-[#ffffff33] rounded-full px-1 text-center"
+                                className="cursor-pointer text-text hover:bg-neutral-200 rounded-full px-1 text-center"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   close();
                                 }}
                               >
-                                <XMarkIcon
-                                  className="text-white"
+                                  <XMarkIcon
+                                    className="text-text"
                                   style={{ height: 16, width: 16 }}
                                 />
                               </button>
@@ -365,7 +365,7 @@ export const CornerDisplayName = ({
                                     >
                                       <div className="flex flex-1 items-center w-[120px]">
                                         {index !== 0 && (
-                                          <p className="text-xs text-white my-[6px] ml-2">
+                                          <p className="text-xs text-text my-[6px] ml-2">
                                             {item.label}
                                           </p>
                                         )}
@@ -376,7 +376,7 @@ export const CornerDisplayName = ({
                                           borderLeft: `1px solid #ffffff33`,
                                         }}
                                       >
-                                        <p className="text-xs text-white my-[6px] w-[80px] text-center">
+                                         <p className="text-xs text-text my-[6px] w-[80px] text-center">
                                           {item.audio}
                                         </p>
                                       </div>
@@ -386,7 +386,7 @@ export const CornerDisplayName = ({
                                           borderLeft: `1px solid #ffffff33`,
                                         }}
                                       >
-                                        <p className="text-xs text-white my-[6px] w-[80px] text-center">
+                                         <p className="text-xs text-text my-[6px] w-[80px] text-center">
                                           {item.video}
                                         </p>
                                       </div>
@@ -473,7 +473,7 @@ export function ParticipantView({ participantId }) {
       onMouseLeave={() => {
         setMouseOver(false);
       }}
-      className={`h-full w-full  bg-gray-750 relative overflow-hidden rounded-lg video-cover`}
+      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover`}
     >
       <audio ref={micRef} autoPlay muted={isLocal} />
       {webcamOn ? (
@@ -498,10 +498,8 @@ export function ParticipantView({ participantId }) {
         />
       ) : (
         <div className="h-full w-full flex items-center justify-center">
-          <div
-            className={`z-10 flex items-center justify-center rounded-full bg-gray-800 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px]`}
-          >
-            <p className="text-2xl text-white">
+          <div className={`z-10 flex items-center justify-center rounded-full bg-surface 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px] border border-neutral-200`}>
+            <p className="text-2xl text-text">
               {String(displayName).charAt(0).toUpperCase()}
             </p>
           </div>

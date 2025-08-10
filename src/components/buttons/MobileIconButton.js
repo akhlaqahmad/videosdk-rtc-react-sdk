@@ -80,7 +80,7 @@ export const MobileIconButton = ({
               }}
             >
               {badge && (
-                <div class="inline-flex absolute -top-2 -right-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-black rounded-full">
+                <div class="inline-flex absolute -top-2 -right-3 justify-center items-center w-6 h-6 text-xs font-bold text-text-inverse bg-text rounded-full">
                   {badge}
                 </div>
               )}
@@ -112,11 +112,11 @@ export const MobileIconButton = ({
               ) : (
                 <Icon
                   style={{
-                    color: isFocused ? focusIconColor || "#fff" : "#95959E",
+                    color: isFocused ? focusIconColor || "rgb(var(--text-inverse))" : "rgb(var(--text))",
                     height: iconSize,
                     width: iconSize,
                   }}
-                  fillcolor={isFocused ? focusIconColor || "#fff" : "#95959E"}
+                  fillcolor={isFocused ? focusIconColor || "rgb(var(--text-inverse))" : "rgb(var(--text))"}
                 />
               )}
             </div>
@@ -124,7 +124,7 @@ export const MobileIconButton = ({
               {buttonText ? (
                 <p
                   className={`${
-                    isFocused ? "text-white" : "text-gray-900"
+                    isFocused ? "text-text-inverse" : "text-text"
                   } text-sm`}
                 >
                   {buttonText}

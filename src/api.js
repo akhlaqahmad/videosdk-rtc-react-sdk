@@ -3,20 +3,25 @@ const VIDEOSDK_TOKEN = process.env.REACT_APP_VIDEOSDK_TOKEN;
 const API_AUTH_URL = process.env.REACT_APP_AUTH_URL;
 
 export const getToken = async () => {
-  if (VIDEOSDK_TOKEN && API_AUTH_URL) {
-    console.error(
-      "Error: Provide only ONE PARAMETER - either Token or Auth API"
-    );
-  } else if (VIDEOSDK_TOKEN) {
-    return VIDEOSDK_TOKEN;
-  } else if (API_AUTH_URL) {
-    const res = await fetch(`${API_AUTH_URL}/get-token`, {
-      method: "GET",
-    });
-    const { token } = await res.json();
-    return token;
-  } else {
-    console.error("Error: ", Error("Please add a token or Auth Server URL"));
+  try {
+    if (VIDEOSDK_TOKEN && API_AUTH_URL) {
+      console.warn(
+        "Both REACT_APP_VIDEOSDK_TOKEN and REACT_APP_AUTH_URL are set. Preferring REACT_APP_VIDEOSDK_TOKEN."
+      );
+      return VIDEOSDK_TOKEN;
+    } else if (VIDEOSDK_TOKEN) {
+      return VIDEOSDK_TOKEN;
+    } else if (API_AUTH_URL) {
+      const res = await fetch(`${API_AUTH_URL}/get-token`, { method: "GET" });
+      if (!res.ok) throw new Error(`Auth server error (${res.status})`);
+      const { token } = await res.json();
+      return token;
+    } else {
+      throw new Error("Missing REACT_APP_VIDEOSDK_TOKEN or REACT_APP_AUTH_URL");
+    }
+  } catch (err) {
+    console.error("Error getting token:", err);
+    return undefined;
   }
 };
 

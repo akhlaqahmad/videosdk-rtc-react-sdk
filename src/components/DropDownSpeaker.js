@@ -56,10 +56,10 @@ export default function DropDownSpeaker({ speakers }) {
               onMouseEnter={() => { setIsHovered(true) }}
               onMouseLeave={() => { setIsHovered(false) }}
               disabled={!isMicrophonePermissionAllowed}
-              className={`focus:outline-none hover:ring-1 hover:ring-gray-250 hover:bg-black 
+              className={`focus:outline-none hover:ring-1 hover:ring-neutral-200 hover:bg-surface 
               ${open
-                  ? "text-white ring-1 ring-gray-250 bg-black"
-                  : "text-customGray-250 hover:text-white"
+                  ? "text-text ring-1 ring-neutral-200 bg-surface"
+                  : "text-textmuted hover:text-text"
                 }
               group inline-flex items-center rounded-md px-1 py-1 w-44 text-base font-normal
               ${!isMicrophonePermissionAllowed ? "opacity-50" : ""}`}
@@ -69,7 +69,7 @@ export default function DropDownSpeaker({ speakers }) {
                 {isMicrophonePermissionAllowed ? selectedSpeaker?.label : "Permission Needed"}
               </span>
               <ChevronDownIcon
-                className={`${open ? 'text-orange-300' : 'text-orange-300/70'}
+                className={`${open ? 'text-primary-200' : 'text-primary-100'}
                 ml-8 h-5 w-5 transition duration-150 ease-in-out group-hover:text-orange-300/80 mt-1`}
                 aria-hidden="true"
               />
@@ -85,7 +85,7 @@ export default function DropDownSpeaker({ speakers }) {
             >
               <Popover.Panel className="absolute bottom-full z-10 mt-3 w-72 px-4 sm:px-0 pb-2">
                 <div className="rounded-lg shadow-lg">
-                  <div className={"bg-gray-350 rounded-lg"} >
+                  <div className={"bg-surface2 rounded-lg border border-neutral-200"} >
                     <div>
                       <div className="flex flex-col">
                         {speakers.map(
@@ -94,7 +94,7 @@ export default function DropDownSpeaker({ speakers }) {
                               item?.kind === "audiooutput" && (
                                 <div
                                   key={`speaker_${index}`}
-                                  className={` my-1 pl-4 pr-2 text-white text-left flex `} >
+                                   className={` my-1 pl-4 pr-2 text-text text-left flex `} >
                                   <span className="w-6 mr-2 flex items-center justify-center">
                                     {selectedSpeaker?.label === item?.label && (
                                       <CheckIcon className='h-5 w-5' />
@@ -124,8 +124,8 @@ export default function DropDownSpeaker({ speakers }) {
                             );
                           }
                         )}
-                        {speakers.length && <> <hr className='border border-gray-50 mt-2 mb-1' />
-                          <div className={`my-1 pl-4 pr-2 text-white text-left`} >
+                        {speakers.length && <> <hr className='border border-neutral-200 mt-2 mb-1' />
+                          <div className={`my-1 pl-4 pr-2 text-text text-left`} >
                             <button
                               className={`flex flex-1 w-full text-left mb-1 pl-1 focus:outline-none`}
                               onClick={testSpeakers}
@@ -133,8 +133,8 @@ export default function DropDownSpeaker({ speakers }) {
                               <span className="mr-3">
                                 <TestSpeaker />
                               </span>
-                              {isPlaying ? <div className="w-52 mt-2 bg-gray-450 rounded-full h-2 dark:bg-gray-700">
-                                <div className="bg-white opacity-50 h-2 rounded-full" style={{ width: `${audioProgress}%` }}></div>
+                              {isPlaying ? <div className="w-52 mt-2 bg-neutral-200 rounded-full h-2">
+                                <div className="bg-text opacity-50 h-2 rounded-full" style={{ width: `${audioProgress}%` }}></div>
                               </div>
                                 : <span>Test Speakers</span>
                               }

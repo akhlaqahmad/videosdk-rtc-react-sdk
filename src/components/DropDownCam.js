@@ -26,10 +26,10 @@ export default function DropDownCam({
               onMouseEnter={() => { setIsHovered(true) }}
               onMouseLeave={() => { setIsHovered(false) }}
               disabled={!isCameraPermissionAllowed}
-              className={`focus:outline-none hover:ring-1 hover:ring-gray-250 hover:bg-black 
+              className={`focus:outline-none hover:ring-1 hover:ring-neutral-200 hover:bg-surface 
               ${open
-                  ? "text-white ring-1 ring-gray-250 bg-black"
-                  : "text-customGray-250 hover:text-white"
+                  ? "text-text ring-1 ring-neutral-200 bg-surface"
+                  : "text-textmuted hover:text-text"
                 }
               group inline-flex items-center rounded-md px-1 py-1 w-44 text-base font-normal
               ${!isCameraPermissionAllowed ? "opacity-50" : ""}`}
@@ -40,7 +40,7 @@ export default function DropDownCam({
               </span>
 
               <ChevronDownIcon
-                className={`${open ? 'text-orange-300' : 'text-orange-300/70'}
+                className={`${open ? 'text-primary-200' : 'text-primary-100'}
                 ml-8 h-5 w-5 transition duration-150 ease-in-out group-hover:text-orange-300/80 mt-1`}
                 aria-hidden="true"
               />
@@ -57,7 +57,7 @@ export default function DropDownCam({
             >
               <Popover.Panel className="absolute bottom-full z-10 mt-3 w-72 px-4 sm:px-0 pb-2">
                 <div className="rounded-lg shadow-lg">
-                  <div className="bg-gray-350 rounded-lg">
+                  <div className="bg-surface2 rounded-lg border border-neutral-200">
                     <div>
                       <div className="flex flex-col">
                         {webcams.map(
@@ -66,7 +66,7 @@ export default function DropDownCam({
                               item?.kind === "videoinput" && (
                                 <div
                                   key={`webcams_${index}`}
-                                  className={` my-1 pl-4 pr-2 text-white text-left flex`}
+                                  className={` my-1 pl-4 pr-2 text-text text-left flex`}
                                 >
                                   <span className="w-6 mr-2 flex items-center justify-center">
                                     {selectedWebcam?.label === item?.label && (

@@ -4,6 +4,10 @@ import "./index.css";
 import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { initTheme } from "./lib/theme";
+
+// Apply theme ASAP to avoid flash
+initTheme();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

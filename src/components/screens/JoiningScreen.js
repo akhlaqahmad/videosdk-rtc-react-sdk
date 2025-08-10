@@ -400,7 +400,7 @@ export function JoiningScreen({
 
   return (
     <div className="fixed inset-0">
-      <div className="overflow-y-auto flex flex-col flex-1 h-screen bg-gray-800">
+      <div className="overflow-y-auto flex flex-col flex-1 h-screen bg-bg text-text">
         <div className="flex flex-1 flex-col md:flex-row items-center justify-center md:m-[72px] m-16">
           <div className="container grid  md:grid-flow-col grid-flow-row ">
             <div className="grid grid-cols-12">
@@ -414,9 +414,7 @@ export function JoiningScreen({
                         muted
                         ref={videoPlayerRef}
                         controls={false}
-                        style={{
-                          backgroundColor: "#1c1c1c",
-                        }}
+                        style={{ backgroundColor: "rgb(var(--surface))" }}
                         className={
                           "rounded-[10px] h-full w-full object-cover flex items-center justify-center flip"
                         }
@@ -425,7 +423,7 @@ export function JoiningScreen({
                         <>
                           <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center">
                             {!webcamOn ? (
-                              <p className="text-xl xl:text-lg 2xl:text-xl text-white">
+                              <p className="text-xl xl:text-lg 2xl:text-xl text-text">
                                 The camera is off
                               </p>
                             ) : null}
@@ -433,7 +431,7 @@ export function JoiningScreen({
                         </>
                       ) : null}
 
-                      <div className="absolute xl:bottom-6 bottom-4 left-0 right-0">
+                        <div className="absolute xl:bottom-6 bottom-4 left-0 right-0">
                         <div className="container grid grid-flow-col space-x-4 items-center justify-center md:-m-2">
                           {isMicrophonePermissionAllowed ? (
                             <ButtonWithTooltip

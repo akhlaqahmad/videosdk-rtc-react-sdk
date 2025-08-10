@@ -1,3 +1,25 @@
+## Theming
+
+This app supports Light and Dark themes with semantic tokens.
+
+- Tokens are defined as CSS variables in `src/styles/globals.css` under `:root[data-theme="light"]` and `:root[data-theme="dark"]`.
+- Tailwind is configured to expose these tokens via `theme.extend.colors` using `rgb(var(--token) / <alpha-value>)`.
+- The theme is applied by setting `document.documentElement.dataset.theme` to `"light"` or `"dark"`; a `dark` class is also toggled for compatibility.
+- User preference is stored in `localStorage.theme`. On first load, system preference is used.
+
+How to use in components:
+
+```jsx
+<div className="bg-bg text-text">
+  <button className="bg-primary-200 text-text-inverse hover:bg-primary-100">Click</button>
+  <div className="bg-surface">...</div>
+  <div className="bg-surface2">...</div>
+  <p className="text-textmuted">Muted text</p>
+  <hr className="border-neutral-200" />
+```
+
+Theme toggle UI is available in the top-right corner and can be reused via `src/components/ThemeToggle.jsx`.
+
 # 🚀 Video SDK for React JS
 
 [![Documentation](https://img.shields.io/badge/Read-Documentation-blue)](https://docs.videosdk.live/react/guide/video-and-audio-calling-api-sdk/concept-and-architecture)

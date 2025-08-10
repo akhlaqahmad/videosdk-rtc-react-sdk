@@ -40,7 +40,7 @@ const NetworkStats = ({ }) => {
   
   return (
     <>
-      <div className="flex flex-row auto-cols-max border border-[#3F4346] divide-x divide-[#3F4346] rounded-md bg-black opacity-80 h-9 ">
+      <div className="flex flex-row auto-cols-max border border-neutral-200 divide-x divide-neutral-200 rounded-md bg-surface opacity-90 h-9 ">
         
         {error === "no-error-loading" &&
           <div className="group inline-flex items-center gap-3 text-xs text-customGray-250 ml-3 ">
@@ -51,11 +51,11 @@ const NetworkStats = ({ }) => {
 
         {error === "no-error" &&
           <>
-            <div className="group  inline-flex items-center gap-2 text-xs text-customGray-250 basis-1/2 w-32">
+            <div className="group  inline-flex items-center gap-2 text-xs text-textmuted basis-1/2 w-32">
               <DownloadIcon />
               {downloadSpeed} MBPS
             </div>
-            <div className="group inline-flex items-center gap-2 text-xs text-customGray-250 basis-1/2 w-32">
+            <div className="group inline-flex items-center gap-2 text-xs text-textmuted basis-1/2 w-32">
               <UploadIcon />
               {uploadSpeed} MBPS
             </div>
