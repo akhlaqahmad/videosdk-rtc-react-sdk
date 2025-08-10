@@ -21,8 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
-package-lock.json
 
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
 
+# Environment variables
 .env

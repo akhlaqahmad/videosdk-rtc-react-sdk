@@ -10,8 +10,10 @@ export const getToken = async () => {
       );
       return VIDEOSDK_TOKEN;
     } else if (VIDEOSDK_TOKEN) {
+      console.log("Using VideoSDK token from environment variables");
       return VIDEOSDK_TOKEN;
     } else if (API_AUTH_URL) {
+      console.log("Fetching token from auth server:", API_AUTH_URL);
       const res = await fetch(`${API_AUTH_URL}/get-token`, { method: "GET" });
       if (!res.ok) throw new Error(`Auth server error (${res.status})`);
       const { token } = await res.json();
@@ -26,44 +28,59 @@ export const getToken = async () => {
 };
 
 export const createMeeting = async ({ token }) => {
-  const url = `${API_BASE_URL}/v2/rooms`;
-  const options = {
-    method: "POST",
-    headers: { Authorization: token, "Content-Type": "application/json" },
-  };
+  try {
+    const url = `${API_BASE_URL}/v2/rooms`;
+    const options = {
+      method: "POST",
+      headers: { Authorization: token, "Content-Type": "application/json" },
+    };
 
-  const response = await fetch(url, options)
-  const data = await response.json()
+    console.log("Creating meeting with token:", token ? "Token present" : "No token");
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-  if (data.roomId) {
-    return { meetingId: data.roomId, err: null }
-  } else {
-    return { meetingId: null, err: data.error }
+    if (data.roomId) {
+      console.log("Meeting created successfully:", data.roomId);
+      return { meetingId: data.roomId, err: null };
+    } else {
+      console.error("Failed to create meeting:", data.error);
+      return { meetingId: null, err: data.error };
+    }
+  } catch (error) {
+    console.error("Error creating meeting:", error);
+    return { meetingId: null, err: error.message };
   }
-
 };
 
 export const validateMeeting = async ({ roomId, token }) => {
-  const url = `${API_BASE_URL}/v2/rooms/validate/${roomId}`;
+  try {
+    const url = `${API_BASE_URL}/v2/rooms/validate/${roomId}`;
 
-  const options = {
-    method: "GET",
-    headers: { Authorization: token, "Content-Type": "application/json" },
-  };
+    const options = {
+      method: "GET",
+      headers: { Authorization: token, "Content-Type": "application/json" },
+    };
 
-  const response = await fetch(url, options)
+    console.log("Validating meeting:", roomId);
+    const response = await fetch(url, options);
 
-  if (response.status === 400) {
-    const data = await response.text()
-    return { meetingId: null, err: data }
+    if (response.status === 400) {
+      const data = await response.text();
+      console.error("Meeting validation failed:", data);
+      return { meetingId: null, err: data };
+    }
+
+    const data = await response.json();
+
+    if (data.roomId) {
+      console.log("Meeting validated successfully:", data.roomId);
+      return { meetingId: data.roomId, err: null };
+    } else {
+      console.error("Meeting validation error:", data.error);
+      return { meetingId: null, err: data.error };
+    }
+  } catch (error) {
+    console.error("Error validating meeting:", error);
+    return { meetingId: null, err: error.message };
   }
-
-  const data = await response.json()
-
-  if (data.roomId) {
-    return { meetingId: data.roomId, err: null }
-  } else {
-    return { meetingId: null, err: data.error }
-  }
-
 };
