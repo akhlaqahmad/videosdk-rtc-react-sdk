@@ -26,7 +26,7 @@ Theme toggle UI is available in the top-right corner and can be reused via `src/
 [![Discord](https://img.shields.io/discord/876774498798551130?label=Join%20on%20Discord)](https://discord.gg/kgAvyxtTxv)
 [![Register](https://img.shields.io/badge/Contact-Know%20More-blue)](https://app.videosdk.live/signup)
 
-At Video SDK, we’re building tools to help companies create world-class collaborative products with capabilities for live audio/video, cloud recordings, RTMP/HLS streaming, and interaction APIs.
+At Video SDK, we're building tools to help companies create world-class collaborative products with capabilities for live audio/video, cloud recordings, RTMP/HLS streaming, and interaction APIs.
 
 ### 🥳 Get **10,000 minutes free** every month! **[Try it now!](https://app.videosdk.live/signup)**
 
@@ -34,12 +34,19 @@ At Video SDK, we’re building tools to help companies create world-class collab
 
 [![React](https://cdn.videosdk.live/docs/images/youtube/React.png)](https://www.youtube.com/watch?v=Yho3zNYLVg8 "React")
 
+## 🌐 Live Demo
+
+**Hosting URL**: https://video-sdk-5aed2.web.app
+
+Experience the app in action with our live deployment on Firebase Hosting!
+
 ## 📚 **Table of Contents**
 
 - [🖥️ **Demo App**](#%EF%B8%8F-demo-app)
 - [⚡ **Quick Setup**](#-quick-setup)
 - [🔧 **Prerequisites**](#-prerequisites)
 - [📦 **Running the Sample App**](#-running-the-sample-app)
+- [🚀 **Deployment**](#-deployment)
 - [🔥 **Meeting Features**](#-meeting-features)
 - [🧠 **Key Concepts**](#-key-concepts)
 - [🔑 **Token Generation**](#-token-generation)
@@ -51,7 +58,7 @@ At Video SDK, we’re building tools to help companies create world-class collab
 
 ## 🖥️ Demo App
 
-Curious to see it in action? Check out our [live demo here](https://videosdk.live/prebuilt/demo). 
+Curious to see it in action? Check out our [live demo here](https://videosdk.live/prebuilt/demo) or visit our **deployed app**: https://video-sdk-5aed2.web.app
 
 ## ⚡ Quick Setup
 
@@ -106,6 +113,67 @@ Bingo, it's time to push the launch button.
 npm run start
 ```
 
+## 🚀 Deployment
+
+This app is configured for easy deployment to Firebase Hosting. Here's how to deploy your own instance:
+
+### Prerequisites for Deployment
+
+1. **Firebase CLI**: Install globally
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+2. **Firebase Account**: Create a project at [Firebase Console](https://console.firebase.google.com/)
+
+### Deployment Steps
+
+1. **Login to Firebase**:
+   ```bash
+   firebase login
+   ```
+
+2. **Initialize Firebase** (first time only):
+   ```bash
+   firebase init hosting
+   ```
+   - Select your project
+   - Use `build` as public directory
+   - Configure as single-page app: **Yes**
+   - Don't overwrite index.html: **No**
+
+3. **Build and Deploy**:
+   ```bash
+   npm run build
+   firebase deploy --only hosting
+   ```
+
+### Environment Variables for Production
+
+For production deployment, ensure your environment variables are set:
+
+```env
+REACT_APP_VIDEOSDK_TOKEN=your_videosdk_token_here
+REACT_APP_AUTH_URL=your_auth_url_here  # Optional
+```
+
+### VideoSDK Domain Whitelisting
+
+After deployment, add your domain to VideoSDK whitelist:
+
+1. Go to [VideoSDK Dashboard](https://app.videosdk.live/)
+2. Navigate to Settings → API Keys
+3. Add your domain to the whitelist:
+   - `https://your-project-id.web.app`
+   - `https://your-project-id.firebaseapp.com`
+   - `http://localhost:3000` (for development)
+
+### Current Deployment
+
+- **URL**: https://video-sdk-5aed2.web.app
+- **Platform**: Firebase Hosting
+- **Status**: ✅ Live and Operational
+- **Last Updated**: August 10, 2025
 
 ## 🔥 Meeting Features
 
@@ -179,7 +247,7 @@ The token is used to create and validate a meeting using API and also initialize
 
 - **[`components/screens/JoiningScreen.js`](https://github.com/videosdk-live/videosdk-rtc-react-sdk-example/blob/main/src/components/screens/JoiningScreen.js)** : Provides users the option to create or join a meeting, manage webcam and mic status, select devices (microphone, camera, speakers), check permissions, preview video, and monitor network statistics to ensure proper setup before entering the meeting.
 
-- **[`api.js`](https://github.com/videosdk-live/videosdk-rtc-react-sdk-example/blob/main/src/api.js)** : Includes all API calls for creating and validating meetings.
+- **[`api.js`](https://github.com/videosdk-live/videosdk-rtc-react-sdk-example/blob/main/src/api.js)** : Includes all API calls for creating and validating meetings with enhanced error handling and logging.
 
 - **[`components/MeetingDetailsScreen.js`](https://github.com/videosdk-live/videosdk-rtc-react-sdk-example/blob/main/src/components/MeetingDetailsScreen.js)** : Displays options for creating or joining a meeting.
 
@@ -251,6 +319,23 @@ The token is used to create and validate a meeting using API and also initialize
 <p align="center">
 <img width="600" src="public/leave-screen.png"/>
 </p>
+
+## 🔧 Recent Updates
+
+### Latest Changes (August 2025)
+
+- ✅ **Enhanced Error Handling**: Improved API error handling and logging in `src/api.js`
+- ✅ **Security Headers**: Added comprehensive security headers in Firebase configuration
+- ✅ **Performance Optimization**: Optimized caching for static assets
+- ✅ **Deployment Guide**: Added comprehensive deployment instructions
+- ✅ **Troubleshooting**: Created detailed troubleshooting guide (`TROUBLESHOOTING.md`)
+- ✅ **Live Demo**: App successfully deployed at https://video-sdk-5aed2.web.app
+
+### Configuration Files
+
+- **`firebase.json`**: Optimized for production with security headers and caching
+- **`src/api.js`**: Enhanced with better error handling and logging
+- **`TROUBLESHOOTING.md`**: Comprehensive guide for common issues and solutions
 
 <br/>
 
