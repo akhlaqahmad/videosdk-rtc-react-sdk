@@ -101,8 +101,8 @@ export const OutlinedButton = ({
             bgColor
               ? `${bgColor}`
               : isFocused
-              ? "bg-primary-200"
-              : "bg-surface2"
+              ? "bg-primary"
+              : "bg-surface"
           } ${
             mouseOver
               ? "border-2 border-transparent border-solid"
@@ -110,7 +110,7 @@ export const OutlinedButton = ({
               ? `border-2 border-[${borderColor}] border-solid`
               : bgColor
               ? "border-2 border-transparent border-solid"
-              : "border-2 border-solid border-neutral-200"
+              : "border-2 border-solid border-border"
           } md:m-2 m-1`}
           style={{
             transition: "all 200ms",
@@ -121,7 +121,7 @@ export const OutlinedButton = ({
           <button
             className={`${
               disabled ? "cursor-default" : "cursor-pointer"
-            } flex items-center justify-center`}
+            } flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg`}
             id={btnID}
             onMouseEnter={() => {
               setMouseOver(true);
@@ -175,23 +175,23 @@ export const OutlinedButton = ({
                     <Icon
                       style={{
                         color: isFocused
-                          ? focusIconColor || "rgb(var(--text-inverse))"
+                          ? focusIconColor || "rgb(var(--primary-foreground))"
                           : color
                           ? color
-                          : "rgb(var(--text))",
+                          : "rgb(var(--text-primary))",
                         height: iconSize,
                         width: iconSize,
                       }}
                       fillcolor={
                         isFocused
-                          ? focusIconColor || "rgb(var(--text-inverse))"
+                          ? focusIconColor || "rgb(var(--primary-foreground))"
                           : color
                           ? color
-                          : "rgb(var(--text))"
+                          : "rgb(var(--text-primary))"
                       }
                     />
                     {badge && (
-                      <p className={`${isFocused ? "text-text-inverse" : "text-text"} text-base ml-2`}>
+                      <p className={`${isFocused ? "text-primary-foreground" : "text-text-primary"} text-base ml-2`}>
                         {badge}
                       </p>
                     )}
@@ -199,7 +199,7 @@ export const OutlinedButton = ({
                 ))}
             </div>
             {buttonText ? (
-              <p className="text-sm text-text font-semibold mr-2 text-center">
+              <p className="text-sm text-text-primary font-semibold mr-2 text-center">
                 {buttonText}
               </p>
             ) : null}
@@ -214,8 +214,8 @@ export const OutlinedButton = ({
         } overflow-hidden flex flex-col items-center justify-center whitespace-pre-line`}
         ref={tooltipRef}
       >
-        <div className={"rounded-md p-1.5 bg-black "}>
-          <p className="text-base text-white ">{tooltip || ""}</p>
+        <div className={"rounded-md p-1.5 bg-neutral-900 "}>
+          <p className="text-base text-neutral-50 ">{tooltip || ""}</p>
         </div>
       </div>
     </>

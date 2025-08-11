@@ -5,52 +5,10 @@
   color-scheme: light dark;
 }
 
-/* Light theme */
-:root[data-theme="light"] {
-  /* Surfaces */
-  --bg: 250 242 233;          /* #faf2e9 */
-  --surface: 250 241 239;     /* #faf1ef */
-  --surface-2: 251 242 240;   /* #fbf2f0 */
-
-  /* Brand */
-  --primary-100: 220 210 234; /* #dcd2ea */
-  --primary-200: 196 208 233; /* #c4d0e9 */
-
-  /* Neutral */
-  --neutral-100: 215 218 233; /* #d7dae9 */
-  --neutral-200: 226 223 232; /* #e2dfe8 */
-
-  /* Derived text (AA on above surfaces) */
-  --text: 17 20 28;           /* near-black for contrast */
-  --text-muted: 64 75 83;     /* muted on light */
-  --text-inverse: 255 255 255;
-}
-
-/* Dark theme maps to existing app colors so dark UI remains unchanged */
-:root[data-theme="dark"] {
-  /* Surfaces taken from existing custom gray scale */
-  --bg: 5 10 14;              /* #050A0E (gray.800) */
-  --surface: 26 28 34;        /* #1A1C22 (gray.750) */
-  --surface-2: 35 40 48;      /* #232830 (gray.700) */
-
-  /* Brand approximations from existing purple scale */
-  --primary-100: 85 104 254;  /* #5568FE (purple.350) */
-  --primary-200: 89 107 255;  /* #596BFF (purple.550) */
-
-  /* Neutral approximations from existing gray scale */
-  --neutral-100: 111 118 126; /* #6F767E (gray.500) */
-  --neutral-200: 129 129 129; /* #818181 (gray.400) */
-
-  /* Derived text for dark */
-  --text: 255 255 255;        /* white on dark */
-  --text-muted: 149 149 158;  /* #95959E */
-  --text-inverse: 17 20 28;
-}
-
 /* Base app background/text fallbacks using tokens */
 html, body, #root {
   background-color: rgb(var(--bg));
-  color: rgb(var(--text));
+  color: rgb(var(--text-primary));
 }
 
 

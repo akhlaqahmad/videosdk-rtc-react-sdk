@@ -38,13 +38,13 @@ const ConfirmBox = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-11/12 max-w-md transform overflow-hidden rounded bg-surface p-4 text-left align-middle shadow-xl transition-all border border-neutral-200">
-                  <Dialog.Title className="text-base font-medium text-text ">
+                <Dialog.Panel className="w-11/12 max-w-md transform overflow-hidden rounded bg-card p-4 text-left align-middle shadow-xl transition-all border border-border">
+                  <Dialog.Title className="text-base font-medium text-text-primary ">
                     {title}
                   </Dialog.Title>
                   <div className="mt-2">
                     <p
-                      className="text-base text-text"
+                      className="text-base text-text-secondary"
                       style={{
                         color: subTitleColor ? subTitleColor : "rgb(var(--text-muted))",
                       }}
@@ -57,7 +57,7 @@ const ConfirmBox = ({
                     {rejectText && (
                       <button
                         type="button"
-                        className="mr-2 rounded px-4 py-2 text-sm font-medium text-text hover:bg-neutral-200 "
+                        className="mr-2 rounded px-4 py-2 text-sm font-medium text-text-primary hover:bg-surface-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg transition-colors"
                         onClick={onReject}
                       >
                         {rejectText}
@@ -65,7 +65,7 @@ const ConfirmBox = ({
                     )}
                     <button
                       type="button"
-                      className="rounded border border-neutral-200 bg-transparent px-4 py-2 text-sm font-medium text-text hover:bg-neutral-200"
+                      className="rounded border border-border bg-surface text-text-primary hover:bg-surface-muted px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg transition-colors"
                       onClick={onSuccess}
                     >
                       {successText}

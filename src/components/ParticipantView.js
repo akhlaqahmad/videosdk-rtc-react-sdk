@@ -217,7 +217,7 @@ export const CornerDisplayName = ({
     return () => {
       if (statsIntervalIdRef.current) clearInterval(statsIntervalIdRef.current);
     };
-  }, [webcamStream, micStream, screenShareStream]);
+  }, [webcamStream, micStream, screenShareStream, updateStats]);
 
   return (
     <>
@@ -235,7 +235,7 @@ export const CornerDisplayName = ({
         ) : micOn && isActiveSpeaker ? (
           <SpeakerIcon />
         ) : null}
-        <p className="text-sm text-text ml-0.5">
+        <p className="text-sm text-text-primary ml-0.5">
           {isPresenting
             ? isLocal
               ? `You are presenting`
@@ -473,7 +473,7 @@ export function ParticipantView({ participantId }) {
       onMouseLeave={() => {
         setMouseOver(false);
       }}
-      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover`}
+      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover border border-border shadow-sm`}
     >
       <audio ref={micRef} autoPlay muted={isLocal} />
       {webcamOn ? (
@@ -498,8 +498,8 @@ export function ParticipantView({ participantId }) {
         />
       ) : (
         <div className="h-full w-full flex items-center justify-center">
-          <div className={`z-10 flex items-center justify-center rounded-full bg-surface 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px] border border-neutral-200`}>
-            <p className="text-2xl text-text">
+          <div className={`z-10 flex items-center justify-center rounded-full bg-surface 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px] border border-border shadow-sm`}>
+            <p className="text-2xl text-text-primary">
               {String(displayName).charAt(0).toUpperCase()}
             </p>
           </div>

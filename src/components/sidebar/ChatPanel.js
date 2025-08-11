@@ -1,9 +1,9 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { useMeeting, usePubSub } from "@videosdk.live/react-sdk";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import { formatAMPM, json_verify, nameTructed } from "../../utils/helper";
 
-const ChatMessage = ({ senderId, senderName, text, timestamp }) => {
+const ChatMessage = memo(({ senderId, senderName, text, timestamp }) => {
   const mMeeting = useMeeting();
   const localParticipantId = mMeeting?.localParticipant?.id;
   const localSender = localParticipantId === senderId;
@@ -18,27 +18,27 @@ const ChatMessage = ({ senderId, senderName, text, timestamp }) => {
       <div
         className={`flex ${
           localSender ? "items-end" : "items-start"
-        } flex-col py-1 px-2 rounded-md bg-surface`}
+        } flex-col py-1 px-2 rounded-md bg-surface border border-border shadow-sm`}
       >
-        <p className="text-textmuted">
+        <p className="text-text-muted">
           {localSender ? "You" : nameTructed(senderName, 15)}
         </p>
         <div>
-          <p className="inline-block whitespace-pre-wrap break-words text-right text-text">
+          <p className="inline-block whitespace-pre-wrap break-words text-right text-text-primary">
             {text}
           </p>
         </div>
         <div className="mt-1">
-          <p className="text-xs italic text-textmuted">
+          <p className="text-xs italic text-text-muted">
             {formatAMPM(new Date(timestamp))}
           </p>
         </div>
       </div>
     </div>
   );
-};
+});
 
-const ChatInput = ({ inputHeight }) => {
+const ChatInput = memo(({ inputHeight }) => {
   const [message, setMessage] = useState("");
   const { publish } = usePubSub("CHAT");
   const input = useRef();
@@ -48,8 +48,8 @@ const ChatInput = ({ inputHeight }) => {
       className="w-full flex items-center px-2"
       style={{ height: inputHeight }}
     >
-      <div class="relative  w-full">
-        <span class="absolute inset-y-0 right-0 flex mr-2 rotate-90 ">
+      <div className="relative w-full">
+        <span className="absolute inset-y-0 right-0 flex mr-2 rotate-90 ">
           <button
             disabled={message.length < 2}
             type="submit"
@@ -65,14 +65,14 @@ const ChatInput = ({ inputHeight }) => {
               }
             }}
           >
-            <PaperAirplaneIcon className={`w-6 h-6 ${message.length < 2 ? "text-textmuted" : "text-text"}`} />
+            <PaperAirplaneIcon className={`w-6 h-6 ${message.length < 2 ? "text-text-muted" : "text-text-primary"}`} />
           </button>
         </span>
         <input
           type="text"
-          className="py-4 text-base text-text border-neutral-200 border bg-surface rounded pr-10 pl-2 focus:outline-none w-full"
+          className="py-4 text-base text-text-primary border border-border bg-surface rounded pr-10 pl-2 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg w-full"
           placeholder="Write your message"
-          autocomplete="off"
+          autoComplete="off"
           ref={input}
           value={message}
           onChange={(e) => {
@@ -96,9 +96,9 @@ const ChatInput = ({ inputHeight }) => {
       </div>
     </div>
   );
-};
+});
 
-const ChatMessages = ({ listHeight }) => {
+const ChatMessages = memo(({ listHeight }) => {
   const listRef = useRef();
   const { messages } = usePubSub("CHAT");
 
@@ -142,7 +142,7 @@ const ChatMessages = ({ listHeight }) => {
   ) : (
     <p>No messages</p>
   );
-};
+});
 
 export function ChatPanel({ panelHeight }) {
   const inputHeight = 72;

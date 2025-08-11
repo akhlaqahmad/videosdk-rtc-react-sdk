@@ -12,6 +12,7 @@ import useIsTab from "../hooks/useIsTab";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-toastify";
 import { useMeetingAppContext } from "../MeetingAppContextDef";
+import SystemEvents from "../components/SystemEvents";
 
 export function MeetingContainer({
   onMeetingLeave,
@@ -209,27 +210,14 @@ export function MeetingContainer({
 
   usePubSub("RAISE_HAND", {
     onMessageReceived: (data) => {
-      const localParticipantId = mMeeting?.localParticipant?.id;
+      const { senderId } = data;
 
-      const { senderId, senderName } = data;
-
-      const isLocal = senderId === localParticipantId;
-
+      // Play notification sound
       new Audio(
         `https://static.videosdk.live/prebuilt/notification.mp3`
       ).play();
 
-      toast(`${isLocal ? "You" : nameTructed(senderName, 15)} raised hand 🖐🏼`, {
-        position: "bottom-left",
-        autoClose: 4000,
-        hideProgressBar: true,
-        closeButton: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-
+      // Update participant raised hand state
       participantRaisedHand(senderId);
     },
   });
@@ -268,6 +256,7 @@ export function MeetingContainer({
 
   return (
     <div className="fixed inset-0">
+      <SystemEvents />
       <div ref={containerRef} className="h-full flex flex-col bg-bg text-text">
         {typeof localParticipantAllowedJoin === "boolean" ? (
           localParticipantAllowedJoin ? (

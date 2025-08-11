@@ -215,8 +215,8 @@ const MicBTN = () => {
         onClick={() => {
           mMeeting.toggleMic();
         }}
-        bgColor={localMicOn ? "bg-surface2" : "bg-surface"}
-        borderColor={localMicOn && "#ffffff33"}
+        bgColor={localMicOn ? "bg-primary" : "bg-surface"}
+        borderColor={localMicOn && "border-primary"}
         isFocused={localMicOn}
         focusIconColor={localMicOn && "white"}
         tooltip={"Toggle Mic"}
@@ -243,7 +243,7 @@ const MicBTN = () => {
                           <ChevronDownIcon
                             className="h-4 w-4"
                             style={{
-                              color: mMeeting.localMicOn ? "white" : "black",
+                              color: mMeeting.localMicOn ? "white" : "rgb(var(--text-primary))",
                             }}
                           />
                         </button>
@@ -395,8 +395,8 @@ const WebCamBTN = () => {
           }
           mMeeting.toggleWebcam(track);
         }}
-        bgColor={localWebcamOn ? "bg-surface2" : "bg-surface"}
-        borderColor={localWebcamOn && "#ffffff33"}
+        bgColor={localWebcamOn ? "bg-primary" : "bg-surface"}
+        borderColor={localWebcamOn && "border-primary"}
         isFocused={localWebcamOn}
         focusIconColor={localWebcamOn && "white"}
         tooltip={"Toggle Webcam"}
@@ -423,7 +423,7 @@ const WebCamBTN = () => {
                           <ChevronDownIcon
                             className="h-4 w-4"
                             style={{
-                              color: localWebcamOn ? "white" : "black",
+                              color: localWebcamOn ? "white" : "rgb(var(--text-primary))",
                             }}
                           />
                         </button>
@@ -831,9 +831,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
                                 : "col-span-4 sm:col-span-3 md:col-span-2"
                             }`}
                           >
-                            {icon === BottomBarButtonTypes.RAISE_HAND ? (
-                              <RaiseHandBTN isMobile={isMobile} isTab={isTab} />
-                            ) : icon === BottomBarButtonTypes.SCREEN_SHARE ? (
+                            {icon === BottomBarButtonTypes.SCREEN_SHARE ? (
                               <ScreenShareBTN
                                 isMobile={isMobile}
                                 isTab={isTab}
@@ -868,14 +866,11 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
     </div>
   ) : (
     <div className="md:flex lg:px-2 xl:px-6 pb-2 px-2 hidden">
-      <div className="flex items-center justify-center mr-2">
-        <img src={"/logo.png"} alt="brand" className="h-6 w-auto opacity-80" />
-      </div>
       <MeetingIdCopyBTN />
 
       <div className="flex flex-1 items-center justify-center" ref={tollTipEl}>
         <RecordingBTN />
-        <RaiseHandBTN isMobile={isMobile} isTab={isTab} />
+        {/* <RaiseHandBTN isMobile={isMobile} isTab={isTab} /> */}
         <MicBTN />
         <WebCamBTN />
         <ScreenShareBTN isMobile={isMobile} isTab={isTab} />

@@ -26,7 +26,7 @@ const WaitingToJoinScreen = () => {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [waitingMessages]);
 
   const isTab = useIsTab();
   const isMobile = useIsMobile();

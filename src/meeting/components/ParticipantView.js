@@ -45,6 +45,8 @@ function ParticipantsViewer({ isPresenting }) {
     pinnedParticipants,
     presenterId,
     localScreenShareOn,
+    isPresenting,
+    localParticipant.id,
   ]);
 
   return (

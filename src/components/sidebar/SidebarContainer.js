@@ -62,9 +62,15 @@ const SideBarTabView = ({
                         sideBarMode.slice(1).toLowerCase() || ""}
                 </p>
                 <button
-                  className="text-text"
+                  className="text-text hover:text-brand-500 transition-colors duration-200"
                   onClick={handleClose}
-                  style={{ margin: 0, padding: 0 }}
+                  style={{ 
+                    margin: 0, 
+                    padding: 8,
+                    zIndex: 10000,
+                    position: 'relative'
+                  }}
+                  aria-label="Close panel"
                 >
                   <XMarkIcon className="h-5 w-5" />
                 </button>

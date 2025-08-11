@@ -6,7 +6,7 @@ import { getNetworkStats } from "@videosdk.live/react-sdk";
 import WifiOff from "../icons/NetworkStats/WifiOff";
 import { useEffect, useState } from "react";
 
-const NetworkStats = ({ }) => {
+const NetworkStats = () => {
   const [error, setError] = useState("no-error-loading")
   const [uploadSpeed, setUploadSpeed] = useState(null)
   const [downloadSpeed, setDownloadSpeed] = useState(null)
@@ -40,10 +40,10 @@ const NetworkStats = ({ }) => {
   
   return (
     <>
-      <div className="flex flex-row auto-cols-max border border-neutral-200 divide-x divide-neutral-200 rounded-md bg-surface opacity-90 h-9 ">
+      <div className="flex flex-row auto-cols-max border border-border divide-x divide-border rounded-md bg-card opacity-90 h-9 shadow-sm">
         
         {error === "no-error-loading" &&
-          <div className="group inline-flex items-center gap-3 text-xs text-customGray-250 ml-3 ">
+          <div className="group inline-flex items-center gap-3 text-xs text-text-muted ml-3 ">
             Checking network speeds
             <RefreshCheck />
           </div>
@@ -51,15 +51,15 @@ const NetworkStats = ({ }) => {
 
         {error === "no-error" &&
           <>
-            <div className="group  inline-flex items-center gap-2 text-xs text-textmuted basis-1/2 w-32">
+            <div className="group  inline-flex items-center gap-2 text-xs text-text-muted basis-1/2 w-32">
               <DownloadIcon />
               {downloadSpeed} MBPS
             </div>
-            <div className="group inline-flex items-center gap-2 text-xs text-textmuted basis-1/2 w-32">
+            <div className="group inline-flex items-center gap-2 text-xs text-text-muted basis-1/2 w-32">
               <UploadIcon />
               {uploadSpeed} MBPS
             </div>
-            <div className="basis-1/6 flex items-center justify-center" onClick={handleOnClick}>
+            <div className="basis-1/6 flex items-center justify-center hover:bg-surface-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded" onClick={handleOnClick}>
               <RefreshIcon />
             </div>
           </>
@@ -67,11 +67,11 @@ const NetworkStats = ({ }) => {
 
         {error === "no-wifi" &&
           <>
-            <div className="group inline-flex items-center gap-3 text-xs text-red-250 p-2 ">
+            <div className="group inline-flex items-center gap-3 text-xs text-red-500 p-2 ">
               <WifiOff />
               You're offline! Check your connection
             </div>
-            <div className=" flex items-center justify-center p-2" onClick={handleOnClick}>
+            <div className=" flex items-center justify-center p-2 hover:bg-surface-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded" onClick={handleOnClick}>
               <RefreshIcon />
             </div>
           </>
@@ -79,10 +79,10 @@ const NetworkStats = ({ }) => {
 
         {error === "timeout" &&
           <>
-            <div className="group inline-flex items-center gap-3 text-xs text-red-250 p-2 ">
+            <div className="group inline-flex items-center gap-3 text-xs text-red-500 p-2 ">
               Something went wrong! Couldn't load data
             </div>
-            <div className=" flex items-center justify-center p-2" onClick={handleOnClick}>
+            <div className=" flex items-center justify-center p-2 hover:bg-surface-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded" onClick={handleOnClick}>
               <RefreshIcon />
             </div>
           </>

@@ -38,7 +38,8 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       aria-pressed={isDark}
       onClick={handleToggle}
-      className="inline-flex items-center justify-center rounded-full h-9 w-9 text-text bg-surface hover:bg-surface2 shadow-sm border border-neutral-200"
+      className="inline-flex items-center justify-center rounded-full h-11 w-11 text-text-primary bg-surface hover:bg-surface-muted shadow-sm border border-border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg"
+      style={{ minHeight: '44px', minWidth: '44px' }}
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
     </button>

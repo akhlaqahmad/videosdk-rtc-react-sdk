@@ -62,7 +62,7 @@ export function PresenterView({ height }) {
     <div
       className={` bg-surface2 rounded m-2 relative overflow-hidden w-full h-[${
         height - "xl:p-6 lg:p-[52px] md:p-[26px] p-1"
-      }] `}
+      }] border border-border shadow-sm`}
     >
       <audio autoPlay playsInline controls={false} ref={audioPlayer} />
       <div className={"video-contain absolute h-full w-full"}>
@@ -104,7 +104,7 @@ export function PresenterView({ height }) {
             <></>
           )}
 
-          <p className="text-sm text-white">
+          <p className="text-sm text-text-primary">
             {isLocal
               ? `You are presenting`
               : `${nameTructed(displayName, 15)} is presenting`}
@@ -112,18 +112,18 @@ export function PresenterView({ height }) {
         </div>
         {isLocal ? (
           <>
-            <div className="p-10 rounded-2xl flex flex-col items-center justify-center absolute top-1/2 left-1/2 bg-surface transform -translate-x-1/2 -translate-y-1/2 border border-neutral-200">
+            <div className="p-10 rounded-2xl flex flex-col items-center justify-center absolute top-1/2 left-1/2 bg-surface transform -translate-x-1/2 -translate-y-1/2 border border-border shadow-lg">
               <ScreenShareIcon
-                style={{ height: 48, width: 48, color: "white" }}
+                style={{ height: 48, width: 48, color: "rgb(var(--text-primary))" }}
               />
               <div className="mt-4">
-                <p className="text-white text-xl font-semibold">
+                <p className="text-text-primary text-xl font-semibold">
                   You are presenting to everyone
                 </p>
               </div>
               <div className="mt-8">
                 <button
-                  className="bg-purple-550 text-white px-4 py-2 rounded text-sm text-center font-medium"
+                  className="bg-primary text-primary-foreground hover:bg-brand-600 px-4 py-2 rounded text-sm text-center font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
                     mMeeting.toggleScreenShare();
