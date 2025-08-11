@@ -88,6 +88,18 @@ export function MeetingDetailsScreen({
           >
             {iscreateMeetingClicked ? "Start a meeting" : "Join a meeting"}
           </button>
+          
+          <button
+            className="w-full bg-surface text-text-primary px-2 py-3 rounded-xl mt-3 border border-border hover:bg-surface-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg transition-colors"
+            onClick={(e) => {
+              setIscreateMeetingClicked(false);
+              setIsJoinMeetingClicked(false);
+              setMeetingId("");
+              setMeetingIdError(false);
+            }}
+          >
+            Back
+          </button>
         </>
       )}
 
