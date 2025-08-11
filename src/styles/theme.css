@@ -3,11 +3,11 @@
   /* Light mode (default) - Brand-aligned pink/purple spectrum */
   
   /* Surfaces */
-  --bg: 255 255 255;                    /* Pure white background */
-  --surface: 255 255 255;               /* Primary surface */
-  --surface-muted: 249 250 251;         /* Muted surface */
-  --card: 255 255 255;                  /* Card background */
-  --border: 229 231 235;                /* Border color */
+  --bg: 246 231 248;                    /* #F6E7F8 - Very light pink-purple background */
+  --surface: 239 201 244;               /* #EFC9F4 - Light lavender-pink for cards */
+  --surface-muted: 246 231 248;         /* #F6E7F8 - Muted surface */
+  --card: 239 201 244;                  /* #EFC9F4 - Card background */
+  --border: 216 164 228;                /* #D8A4E4 - Pastel purple border */
   
   /* Brand colors - Pink spectrum */
   --brand-50: 253 242 248;              /* #fdf2f8 */
@@ -15,8 +15,8 @@
   --brand-200: 251 207 232;             /* #fbcfe8 */
   --brand-300: 249 168 212;             /* #f9a8d4 */
   --brand-400: 244 114 182;             /* #f472b6 */
-  --brand-500: 236 72 153;              /* #ec4899 */
-  --brand-600: 219 39 119;              /* #db2777 */
+  --brand-500: 164 90 196;              /* #A45AC4 - Brand purple accent */
+  --brand-600: 142 78 178;              /* #8E4EB2 - Hover state */
   --brand-700: 190 24 93;               /* #be185d */
   --brand-800: 157 23 77;               /* #9d174d */
   --brand-900: 131 24 67;               /* #831843 */
@@ -52,10 +52,10 @@
   --text-inverse: 255 255 255;          /* White text for dark backgrounds */
   
   /* Interactive elements */
-  --primary: 236 72 153;                /* brand-500 */
+  --primary: 164 90 196;                /* #A45AC4 - Brand purple accent */
   --primary-foreground: 255 255 255;    /* White text on primary */
-  --ring: 236 72 153;                   /* brand-500 for focus rings */
-  --focus: 236 72 153;                  /* brand-500 for focus states */
+  --ring: 164 90 196;                   /* #A45AC4 for focus rings */
+  --focus: 164 90 196;                  /* #A45AC4 for focus states */
   
   /* Legacy support - keeping existing tokens */
   --surface-2: 249 250 251;

@@ -423,7 +423,7 @@ export function JoiningScreen({
                         <>
                           <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center">
                             {!webcamOn ? (
-                              <p className="text-xl xl:text-lg 2xl:text-xl text-text-primary">
+                              <p className="text-xl xl:text-lg 2xl:text-xl text-white">
                                 The camera is off
                               </p>
                             ) : null}

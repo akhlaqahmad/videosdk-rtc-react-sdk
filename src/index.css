@@ -19,7 +19,7 @@
 @layer components {
   /* Interactive element base styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-brand-600 focus-ring;
+    @apply bg-primary text-primary-foreground hover:bg-brand-600 focus-ring transition-colors;
   }
 
   .btn-secondary {
