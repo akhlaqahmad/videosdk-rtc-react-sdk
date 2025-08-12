@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import animationData from "../../../src/static/animations/join_meeting.json";
-import Lottie from "lottie-react";
 import useIsTab from "../../hooks/useIsTab";
 import useIsMobile from "../../hooks/useIsMobile";
 import logo from "../../pictures/logo.png";
@@ -31,15 +29,6 @@ const WaitingToJoinScreen = () => {
   const isTab = useIsTab();
   const isMobile = useIsMobile();
 
-  const animationDefaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   return (
     <div
       className="bg-bg text-text"
@@ -48,32 +37,42 @@ const WaitingToJoinScreen = () => {
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
-        // backgroundColor: theme.palette.darkTheme.main,
       }}
     >
-      <div className="flex flex-col items-center">
-        <img src={logo} alt="brand" className="h-10 w-auto mb-3 opacity-80" />
-        <div
-          style={{
-            height: isTab ? 200 : isMobile ? 200 : 250,
-            width: isTab ? 200 : isMobile ? 200 : 250,
-          }}
-        >
-          <Lottie
-            loop={animationDefaultOptions.loop}
-            autoplay={animationDefaultOptions.autoplay}
-            animationData={animationDefaultOptions.animationData}
-            rendererSettings={{
-              preserveAspectRatio:
-                animationDefaultOptions.rendererSettings.preserveAspectRatio,
+      <div className="flex flex-col items-center space-y-6">
+        {/* Animated Logo with Light Pink Tint */}
+        <div className="relative">
+          <img
+            src={logo}
+            alt="Loading..."
+            className="animate-pulse"
+            style={{
+              height: isTab ? 160 : isMobile ? 160 : 200,
+              width: isTab ? 160 : isMobile ? 160 : 200,
+              filter: "hue-rotate(320deg) saturate(0.6) brightness(1.2)",
+              animation: "pulse 2s ease-in-out infinite",
             }}
-            style={{ height: "100%", width: "100%" }}
           />
         </div>
-        <h1 className="text-text text-center font-bold mt-1 text-xl">
+        
+        <h1 className="text-text text-center font-bold text-xl">
           {message.text}
         </h1>
       </div>
+      
+      {/* Custom CSS for smooth pulse animation */}
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.7;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+        }
+      `}</style>
     </div>
   );
 };

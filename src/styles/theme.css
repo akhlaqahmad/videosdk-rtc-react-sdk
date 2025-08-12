@@ -15,8 +15,8 @@
   --brand-200: 251 207 232;             /* #fbcfe8 */
   --brand-300: 249 168 212;             /* #f9a8d4 */
   --brand-400: 244 114 182;             /* #f472b6 */
-  --brand-500: 164 90 196;              /* #A45AC4 - Brand purple accent */
-  --brand-600: 142 78 178;              /* #8E4EB2 - Hover state */
+  --brand-500: 85 104 254;              /* #5568FE - Blue-purple accent (like night mode) */
+  --brand-600: 89 107 255;              /* #596BFF - Hover state */
   --brand-700: 190 24 93;               /* #be185d */
   --brand-800: 157 23 77;               /* #9d174d */
   --brand-900: 131 24 67;               /* #831843 */
@@ -52,10 +52,10 @@
   --text-inverse: 255 255 255;          /* White text for dark backgrounds */
   
   /* Interactive elements */
-  --primary: 164 90 196;                /* #A45AC4 - Brand purple accent */
+  --primary: 85 104 254;                /* #5568FE - Blue-purple accent (like night mode) */
   --primary-foreground: 255 255 255;    /* White text on primary */
-  --ring: 164 90 196;                   /* #A45AC4 for focus rings */
-  --focus: 164 90 196;                  /* #A45AC4 for focus states */
+  --ring: 85 104 254;                   /* #5568FE for focus rings */
+  --focus: 85 104 254;                  /* #5568FE for focus states */
   
   /* Legacy support - keeping existing tokens */
   --surface-2: 249 250 251;
