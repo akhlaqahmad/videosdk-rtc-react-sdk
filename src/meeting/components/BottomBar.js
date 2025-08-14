@@ -215,10 +215,10 @@ const MicBTN = () => {
         onClick={() => {
           mMeeting.toggleMic();
         }}
-        bgColor={localMicOn ? "bg-primary" : "bg-surface"}
-        borderColor={localMicOn && "border-primary"}
-        isFocused={localMicOn}
-        focusIconColor={localMicOn && "white"}
+        bgColor={localMicOn ? "bg-surface" : "bg-primary"}
+        borderColor={!localMicOn && "border-primary"}
+        isFocused={!localMicOn}
+        focusIconColor={!localMicOn && "white"}
         tooltip={"Toggle Mic"}
         renderRightComponent={() => {
           return (
@@ -243,7 +243,7 @@ const MicBTN = () => {
                           <ChevronDownIcon
                             className="h-4 w-4"
                             style={{
-                              color: mMeeting.localMicOn ? "white" : "rgb(var(--text-primary))",
+                              color: mMeeting.localMicOn ? "rgb(var(--text-primary))" : "white",
                             }}
                           />
                         </button>
@@ -395,10 +395,10 @@ const WebCamBTN = () => {
           }
           mMeeting.toggleWebcam(track);
         }}
-        bgColor={localWebcamOn ? "bg-primary" : "bg-surface"}
-        borderColor={localWebcamOn && "border-primary"}
-        isFocused={localWebcamOn}
-        focusIconColor={localWebcamOn && "white"}
+        bgColor={localWebcamOn ? "bg-surface" : "bg-primary"}
+        borderColor={!localWebcamOn && "border-primary"}
+        isFocused={!localWebcamOn}
+        focusIconColor={!localWebcamOn && "white"}
         tooltip={"Toggle Webcam"}
         renderRightComponent={() => {
           return (
@@ -423,7 +423,7 @@ const WebCamBTN = () => {
                           <ChevronDownIcon
                             className="h-4 w-4"
                             style={{
-                              color: localWebcamOn ? "white" : "rgb(var(--text-primary))",
+                              color: localWebcamOn ? "rgb(var(--text-primary))" : "white",
                             }}
                           />
                         </button>

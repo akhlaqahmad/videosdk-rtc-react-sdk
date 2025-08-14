@@ -101,7 +101,32 @@ input:focus-visible{
 .video-cover video {
   position: absolute;
   object-fit: cover;
-  
+}
+
+/* Comprehensive video mirroring for local user */
+.video-cover.local-video video,
+.video-cover.local-video > div > video,
+.video-cover.local-video div[data-testid] video,
+.video-cover.local-video [class*="react-player"] video,
+.video-cover.local-video * video {
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
+  -moz-transform: scaleX(-1) !important;
+  -ms-transform: scaleX(-1) !important;
+}
+
+/* Target ReactPlayer wrapper itself */
+.video-cover.local-video > div,
+.video-cover.local-video [class*="react-player"] {
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
+}
+
+/* New wrapper approach */
+.mirror-video,
+.mirror-video * {
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
 }
 
 input[type="radio"]:checked + label span {

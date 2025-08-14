@@ -473,29 +473,38 @@ export function ParticipantView({ participantId }) {
       onMouseLeave={() => {
         setMouseOver(false);
       }}
-      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover border border-border shadow-sm`}
+      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover ${isLocal ? 'local-video' : ''} border border-border shadow-sm`}
     >
       <audio ref={micRef} autoPlay muted={isLocal} />
       {webcamOn ? (
-        <ReactPlayer
-          //
-          playsinline // very very imp prop
-          playIcon={<></>}
-          //
-          pip={false}
-          light={false}
-          controls={false}
-          muted={true}
-          playing={true}
-          //
-          url={webcamMediaStream}
-          //
-          height={"100%"}
-          width={"100%"}
-          onError={(err) => {
-            console.log(err, "participant video error");
+        <div 
+          className={`video-player-wrapper ${isLocal ? 'mirror-video' : ''}`}
+          style={{ 
+            width: '100%', 
+            height: '100%',
+            transform: isLocal ? 'scaleX(-1)' : 'none'
           }}
-        />
+        >
+          <ReactPlayer
+            //
+            playsinline // very very imp prop
+            playIcon={<></>}
+            //
+            pip={false}
+            light={false}
+            controls={false}
+            muted={true}
+            playing={true}
+            //
+            url={webcamMediaStream}
+            //
+            height={"100%"}
+            width={"100%"}
+            onError={(err) => {
+              console.log(err, "participant video error");
+            }}
+          />
+        </div>
       ) : (
         <div className="h-full w-full flex items-center justify-center">
           <div className={`z-10 flex items-center justify-center rounded-full bg-surface 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px] border border-border shadow-sm`}>
