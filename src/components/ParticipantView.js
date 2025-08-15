@@ -458,6 +458,8 @@ export function ParticipantView({ participantId }) {
       }
   }, [micStream, micOn, micRef])
 
+  const { mirrorVideo } = useMeetingAppContext();
+
   const webcamMediaStream = useMemo(() => {
     if (webcamOn && webcamStream) {
       const mediaStream = new MediaStream();
@@ -478,11 +480,12 @@ export function ParticipantView({ participantId }) {
       <audio ref={micRef} autoPlay muted={isLocal} />
       {webcamOn ? (
         <div 
-          className={`video-player-wrapper ${isLocal ? 'mirror-video' : ''}`}
+          className="video-player-wrapper"
           style={{ 
             width: '100%', 
             height: '100%',
-            transform: isLocal ? 'scaleX(-1)' : 'none'
+            transform: isLocal && mirrorVideo ? 'scaleX(-1)' : 'none',
+            transition: 'transform 0.2s ease-in-out'
           }}
         >
           <ReactPlayer

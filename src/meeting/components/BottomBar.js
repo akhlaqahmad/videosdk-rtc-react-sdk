@@ -33,6 +33,7 @@ import { Dialog, Popover, Transition } from "@headlessui/react";
 import { createPopper } from "@popperjs/core";
 import { useMeetingAppContext } from "../../MeetingAppContextDef";
 import useMediaStream from "../../hooks/useMediaStream";
+import MirrorVideoIcon from "../../icons/Bottombar/MirrorVideoIcon";
 
 function PipBTN({ isMobile, isTab }) {
   const { pipMode, setPipMode } = useMeetingAppContext();
@@ -499,6 +500,38 @@ const WebCamBTN = () => {
   );
 };
 
+const MirrorVideoBTN = () => {
+  const { mirrorVideo, setMirrorVideo } = useMeetingAppContext();
+  const isMobile = useIsMobile();
+  const isTab = useIsTab();
+
+  const _handleClick = () => {
+    setMirrorVideo(!mirrorVideo);
+  };
+
+  return (
+    <>
+      {isMobile || isTab ? (
+        <MobileIconButton
+          id="mirror-video-btn"
+          tooltipTitle={mirrorVideo ? "Turn off mirror" : "Turn on mirror"}
+          buttonText={mirrorVideo ? "Turn off mirror" : "Turn on mirror"}
+          isFocused={mirrorVideo}
+          Icon={MirrorVideoIcon}
+          onClick={_handleClick}
+        />
+      ) : (
+        <OutlinedButton
+          Icon={MirrorVideoIcon}
+          onClick={_handleClick}
+          isFocused={mirrorVideo}
+          tooltip={mirrorVideo ? "Turn off mirror" : "Turn on mirror"}
+        />
+      )}
+    </>
+  );
+};
+
 export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
   const { sideBarMode, setSideBarMode } = useMeetingAppContext();
   const RaiseHandBTN = ({ isMobile, isTab }) => {
@@ -765,6 +798,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
       RAISE_HAND: "RAISE_HAND",
       RECORDING: "RECORDING",
       PIP: "PIP",
+      MIRROR_VIDEO: "MIRROR_VIDEO",
       MEETING_ID_COPY: "MEETING_ID_COPY",
     }),
     []
@@ -773,6 +807,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
   const otherFeatures = [
     { icon: BottomBarButtonTypes.RAISE_HAND },
     { icon: BottomBarButtonTypes.PIP },
+    { icon: BottomBarButtonTypes.MIRROR_VIDEO },
     { icon: BottomBarButtonTypes.SCREEN_SHARE },
     { icon: BottomBarButtonTypes.CHAT },
     { icon: BottomBarButtonTypes.PARTICIPANTS },
@@ -851,6 +886,8 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
                               />
                             ) : icon === BottomBarButtonTypes.PIP ? (
                               <PipBTN isMobile={isMobile} isTab={isTab} />
+                            ) : icon === BottomBarButtonTypes.MIRROR_VIDEO ? (
+                              <MirrorVideoBTN />
                             ) : null}
                           </div>
                         );
@@ -873,6 +910,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
         {/* <RaiseHandBTN isMobile={isMobile} isTab={isTab} /> */}
         <MicBTN />
         <WebCamBTN />
+        <MirrorVideoBTN />
         <ScreenShareBTN isMobile={isMobile} isTab={isTab} />
         <PipBTN isMobile={isMobile} isTab={isTab} />
         <LeaveBTN />

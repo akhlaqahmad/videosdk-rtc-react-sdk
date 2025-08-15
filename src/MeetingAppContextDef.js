@@ -13,6 +13,7 @@ export const MeetingAppProvider = ({ children }) => {
   const [raisedHandsParticipants, setRaisedHandsParticipants] = useState([]);
   const [sideBarMode, setSideBarMode] = useState(null);
   const [pipMode, setPipMode] = useState(false);
+  const [mirrorVideo, setMirrorVideo] = useState(true); // Default to true for Zoom-like behavior
 
   const useRaisedHandParticipants = () => {
     const raisedHandsParticipantsRef = useRef();
@@ -75,6 +76,7 @@ export const MeetingAppProvider = ({ children }) => {
         selectedSpeaker,
         sideBarMode,
         pipMode,
+        mirrorVideo,
         isCameraPermissionAllowed,
         isMicrophonePermissionAllowed,
 
@@ -86,6 +88,7 @@ export const MeetingAppProvider = ({ children }) => {
         setSelectedSpeaker,
         setSideBarMode,
         setPipMode,
+        setMirrorVideo,
         useRaisedHandParticipants,
         setIsCameraPermissionAllowed,
         setIsMicrophonePermissionAllowed,
