@@ -887,7 +887,8 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
                             ) : icon === BottomBarButtonTypes.PIP ? (
                               <PipBTN isMobile={isMobile} isTab={isTab} />
                             ) : icon === BottomBarButtonTypes.MIRROR_VIDEO ? (
-                              <MirrorVideoBTN />
+                              // <MirrorVideoBTN />
+                              null
                             ) : null}
                           </div>
                         );
@@ -910,7 +911,7 @@ export function BottomBar({ bottomBarHeight, setIsMeetingLeft }) {
         {/* <RaiseHandBTN isMobile={isMobile} isTab={isTab} /> */}
         <MicBTN />
         <WebCamBTN />
-        <MirrorVideoBTN />
+        {/* <MirrorVideoBTN /> */}
         <ScreenShareBTN isMobile={isMobile} isTab={isTab} />
         <PipBTN isMobile={isMobile} isTab={isTab} />
         <LeaveBTN />
