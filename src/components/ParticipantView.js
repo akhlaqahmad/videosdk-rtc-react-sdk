@@ -21,6 +21,7 @@ export const CornerDisplayName = ({
   micOn,
   mouseOver,
   isActiveSpeaker,
+  mirrorVideo,
 }) => {
   const isMobile = useIsMobile();
   const isTab = useIsTab();
@@ -468,48 +469,53 @@ export function ParticipantView({ participantId }) {
     }
   }, [webcamStream, webcamOn]);
   return mode === "SEND_AND_RECV" ? (
-    <div
-      onMouseEnter={() => {
-        setMouseOver(true);
-      }}
-      onMouseLeave={() => {
-        setMouseOver(false);
-      }}
-      className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover ${isLocal ? 'local-video' : ''} border border-border shadow-sm`}
-    >
-      <audio ref={micRef} autoPlay muted={isLocal} />
-      {webcamOn ? (
-        <div 
-          className="video-player-wrapper"
-          style={{ 
-            width: '100%', 
-            height: '100%',
-            transform: isLocal && mirrorVideo ? 'scaleX(-1)' : 'none',
-            transition: 'transform 0.2s ease-in-out'
-          }}
-        >
-          <ReactPlayer
-            //
-            playsinline // very very imp prop
-            playIcon={<></>}
-            //
-            pip={false}
-            light={false}
-            controls={false}
-            muted={true}
-            playing={true}
-            //
-            url={webcamMediaStream}
-            //
-            height={"100%"}
-            width={"100%"}
-            onError={(err) => {
-              console.log(err, "participant video error");
+    <div className="relative h-full w-full">
+      <div
+        onMouseEnter={() => {
+          setMouseOver(true);
+        }}
+        onMouseLeave={() => {
+          setMouseOver(false);
+        }}
+        className={`h-full w-full bg-surface2 relative overflow-hidden rounded-lg video-cover ${isLocal ? 'local-video' : ''} border border-border shadow-sm`}
+      >
+        <audio ref={micRef} autoPlay muted={isLocal} />
+        {webcamOn ? (
+          <div 
+            className="video-player-wrapper"
+            style={{ 
+              width: '100%', 
+              height: '100%'
             }}
-          />
-        </div>
-      ) : (
-        <div className="h-full w-full flex items-center justify-center">
+          >
+            <ReactPlayer
+              //
+              playsinline // very very imp prop
+              playIcon={<></>}
+              //
+              pip={false}
+              light={false}
+              controls={false}
+              muted={true}
+              playing={true}
+              //
+              url={webcamMediaStream}
+              //
+              height={"100%"}
+              width={"100%"}
+              style={{
+                transform: isLocal && mirrorVideo ? 'scaleX(-1)' : 'none',
+                transition: 'transform 0.2s ease-in-out'
+              }}
+              onError={(err) => {
+                console.log(err, "participant video error");
+              }}
+            />
+          </div>
+        ) : null}
+      </div>
+      {!webcamOn && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className={`z-10 flex items-center justify-center rounded-full bg-surface 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px] border border-border shadow-sm`}>
             <p className="text-2xl text-text-primary">
               {String(displayName).charAt(0).toUpperCase()}
@@ -527,6 +533,7 @@ export function ParticipantView({ participantId }) {
           participantId,
           mouseOver,
           isActiveSpeaker,
+          mirrorVideo,
         }}
       />
     </div>
